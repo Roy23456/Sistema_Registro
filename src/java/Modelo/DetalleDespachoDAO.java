@@ -117,4 +117,17 @@ public class DetalleDespachoDAO {
         }    
         return r;
     }
+    
+    public void eliminarDetalle (int idDespacho) {
+        String sql = "delete from detalle_despacho where idDespacho="+idDespacho;
+        
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            
+        }
+    }
 }

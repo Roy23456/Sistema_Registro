@@ -103,8 +103,9 @@
                                                 <a href="EquipoControlador?accion=editarDespacho&idDespacho=${dato.getIdDespacho()}" class="btn btn-outline-warning">
                                                     <span class="bi bi-pencil-square">Editar</span>
                                                 </a>
-
-                                                <a href="" class="btn btn-outline-danger">
+                                                    
+                                                <input type="hidden" name="idDespacho" id="idDespacho" value="${dato.getIdDespacho()}">
+                                                <a id="eliminarDespacho" class="btn btn-outline-danger">
                                                     <span class="bi bi-trash">Eliminar</span>
                                                 </a>
                                             </td>

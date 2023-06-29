@@ -222,5 +222,49 @@ $(document).ready(function () {
             document.form.submit();
         }
     });
+    
+    //Eliminar Despacho
+    //EditarDespacho
+    $("#eliminarDespacho").click(function () {
+        var idDespacho = document.getElementById('idDespacho').value;
+        
+        Swal.fire({
+            title: "¿Está Seguro de Eliminar?",
+            text: "¡Una vez eliminado, Ud. puede agregar de nuevo!",
+            icon: "warning",
+            allowOutsideClick: false,
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar",
+            dangerMode: true
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'EquipoControlador?accion=eliminarDespacho',
+                    
+                    data: {
+                        'idDespacho': idDespacho
+                    },
+                    
+                    success: function () {
+                        Swal.fire(
+                                '¡Se eliminaron los datos correctamente!'
+                                ).then((result) => {
+                                    
+                            if (result.isConfirmed) {
+                                parent.location.href = "EquipoControlador?accion=listarDespachos";
+                            }
+                        });
+                    }
+                });
+                
+            } else {
+                Swal.fire("¡Registro no eliminado!");
+            }
+        });
+    });
 });
 

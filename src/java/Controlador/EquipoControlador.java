@@ -134,6 +134,12 @@ public class EquipoControlador extends HttpServlet {
                 request.getRequestDispatcher("Personal.jsp").forward(request, response);
                 break;
                 
+            case "eliminarDespacho":
+                int codDespacho = Integer.parseInt(request.getParameter("idDespacho"));
+                ddao.eliminarDespacho(codDespacho);    
+                dedao.eliminarDetalle(codDespacho);
+                break;
+                
             default:
                 request.getRequestDispatcher("index.jsp").forward(request, response);
         }
