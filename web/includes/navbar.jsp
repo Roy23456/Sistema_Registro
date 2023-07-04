@@ -22,6 +22,9 @@
                     <a class="nav-link" href="EquipoControlador?accion=listarPersonal">Personal</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="Controlador?accion=Dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="Controlador?accion=logout">Salir
                         <i class="bi bi-box-arrow-left"></i>
                     </a>

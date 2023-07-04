@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="includes/header.jsp"></jsp:include>
+    
     <script language="javascript">
         function atras(){history.back();}
     </script>
@@ -16,7 +17,7 @@
                     Equipo:
                     <select name="equipo" id="equipo" class="form-control">
                         <option value="${listado[0].getIdEquipo()}"> ${listado[0].getDescripcion()}</option>
-                        <option value="0"> ---- </option>
+                        <option value=""> ---- </option>
 
                         <c:forEach var="equipo" items="${equipo}">
                             <option value="${equipo.getIdEquipo()}"> ${equipo.getDescripcion()}</option>
@@ -30,8 +31,9 @@
                 <br/>
                
                 <input type="hidden" name="fecha" id="fecha" value="">
+                <input type="hidden" name="despacho" id="despacho" value="${listado[0].getIdDespacho()}">
                 
-                <input type="button" id="editarDespacho" value="Actualizar" class="btn btn-primary btn-lg"/>
+                <a id="editarDespacho" class="btn btn-primary btn-lg"/>Actualizar</a>
                 <button type="button" onclick="atras()" class="btn btn-warning btn-lg">Regresar</button>
             </form>
         </div>

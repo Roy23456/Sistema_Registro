@@ -77,8 +77,7 @@ public class DetalleDespachoDAO {
         List<DetalleDespacho> listado = new ArrayList<>();
         
         try {
-            con = cn.Conexion();
-            
+            con = cn.Conexion();    
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             
@@ -107,9 +106,9 @@ public class DetalleDespachoDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, de.getIdDespacho());
-            ps.setInt(2, de.getIdEquipo());
-            ps.setInt(3, de.getCantidad());
+            ps.setInt(1, de.getIdEquipo());
+            ps.setInt(2, de.getCantidad());
+            ps.setInt(3, de.getIdDespacho());
             ps.executeUpdate();
             
         } catch (SQLException e) {
@@ -119,11 +118,12 @@ public class DetalleDespachoDAO {
     }
     
     public void eliminarDetalle (int idDespacho) {
-        String sql = "delete from detalle_despacho where idDespacho="+idDespacho;
+        String sql = "delete from detalle_despacho where idDespacho=?";
         
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
+            ps.setInt(1, idDespacho);
             ps.executeUpdate();
             
         } catch (SQLException e) {

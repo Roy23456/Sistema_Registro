@@ -16,7 +16,6 @@
                                 <th>Codigo</th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
-                                <th> </th>
                             </tr>
                         </thead>
                         
@@ -26,15 +25,6 @@
                                     <td>${lista.getIdPersonal()}</td>
                                     <td>${lista.getNombre()}</td>
                                     <td>${lista.getCargo()}</td>
-                                    <td>
-                                        <a href="" class="btn btn-outline-warning">
-                                            <span class="bi bi-pencil-square">Editar</span>
-                                        </a>
-                                            
-                                        <a href="" class="btn btn-outline-danger">
-                                            <span class="bi bi-trash">Eliminar</span>
-                                        </a>
-                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

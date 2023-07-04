@@ -118,8 +118,27 @@ $(document).ready(function () {
         });
     });
     
+    //EditarEquipo
+    $("#editarEquipo").click(function () {
+        var descripcion = document.getElementById('descripcion').value;
+        document.getElementById('fecha').value = fecha;
+        
+        if (!descripcion) {
+            Swal.fire({
+                title: '¡El campo no puede estar vacío!',
+                allowOutsideClick: false
+            });
+            
+        } else {
+            document.form.action = "EquipoControlador?accion=actualizarEquipo";
+            document.form.method = "POST";
+            document.form.submit();
+        }
+    });
+    
+    //Eliminar Equipo
     $("tr #eliminarEquipo").click(function () {
-        var idEquipo = $(this).parent().find("#idEquipo").val();;
+        var idEquipo = document.getElementById('equipo').value;
 
         Swal.fire({
             title: "¿Está Seguro de Eliminar?",
@@ -183,7 +202,7 @@ $(document).ready(function () {
             
             $.ajax({
                 type: 'POST',
-                url: 'EquipoControlador?accion=agregarDespacho',
+                url: 'DespachoControlador?accion=agregarDespacho',
                 data: {
                     'idEquipo': idEquipo,
                     'idPersonal': idPersonal,
@@ -197,7 +216,7 @@ $(document).ready(function () {
                             '¡Se guardaron los datos correctamente!'
                             ).then((result) => {
                         if (result.isConfirmed) {
-                            parent.location.href = "EquipoControlador?accion=listarDespachos";
+                            parent.location.href = "DespachoControlador?accion=listarDespachos";
                         }
                     });
                 }
@@ -210,22 +229,21 @@ $(document).ready(function () {
         var idEquipo = document.getElementById('equipo').value;
         document.getElementById('fecha').value = fecha;
         
-        if (idEquipo === 0) {
+        if (!idEquipo) {
             Swal.fire({
                 title: '¡Por favor, Seleccione una opción valida!',
                 allowOutsideClick: false
             });
             
         } else {
-            document.form.action = "EquipoControlador?accion=actualizarDespacho";
+            document.form.action = "DespachoControlador?accion=actualizarDespacho";
             document.form.method = "POST";
             document.form.submit();
         }
     });
     
     //Eliminar Despacho
-    //EditarDespacho
-    $("#eliminarDespacho").click(function () {
+    $("tr #eliminarDespacho").click(function () {
         var idDespacho = document.getElementById('idDespacho').value;
         
         Swal.fire({
@@ -243,7 +261,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 $.ajax({
                     type: 'POST',
-                    url: 'EquipoControlador?accion=eliminarDespacho',
+                    url: 'DespachoControlador?accion=eliminarDespacho',
                     
                     data: {
                         'idDespacho': idDespacho
@@ -255,7 +273,7 @@ $(document).ready(function () {
                                 ).then((result) => {
                                     
                             if (result.isConfirmed) {
-                                parent.location.href = "EquipoControlador?accion=listarDespachos";
+                                parent.location.href = "DespachoControlador?accion=listarDespachos";
                             }
                         });
                     }

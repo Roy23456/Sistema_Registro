@@ -16,13 +16,6 @@
                         <div class="col">
                             <input type="hidden" id="idUsuario" name="idUsuario" value="${usuario.getIdUsuario()}">
                             <a id="agregarEquipos" class="btn btn-outline-success">Agregar Equipo</a>
-                        </div>  
-                        
-                        <div class="col" align="right">
-                            <form class="form-inline my-2 my-lg-0">
-                            <a>Buscar: </a>
-                            <input class="form-control-sm" type="search" placeholder="Search" aria-label="Search">
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -55,12 +48,12 @@
                                     <td>S/ ${e.getPrecio()}</td>
                                     <td>${e.getFecha()}</td>
                                     <td>
-                                        <a href="" class="btn btn-outline-warning">
+                                        <a href="EquipoControlador?accion=editarEquipo&idEquipo=${e.getIdEquipo()}" class="btn btn-outline-warning">
                                             <span class="bi bi-pencil-square">Editar</span>
                                         </a>
-                                            
+                                        
+                                        <input type="hidden" id="equipo" name="equipo" value="${e.getIdEquipo()}">
                                         <a id="eliminarEquipo" class="btn btn-outline-danger">
-                                            <input type="hidden" id="idEquipo" name="idEquipo" value="${e.getIdEquipo()}">
                                             <span class="bi bi-trash">Eliminar</span>
                                         </a>
                                     </td>

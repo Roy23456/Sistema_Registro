@@ -73,7 +73,11 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 
             case "Principal":
-                request.getRequestDispatcher("Principal.jsp").forward(request, response);;
+                request.getRequestDispatcher("Principal.jsp").forward(request, response);
+                break;
+                
+            case "Dashboard":
+                request.getRequestDispatcher("Dashboard.jsp").forward(request, response);;
                 break;
                 
             default:

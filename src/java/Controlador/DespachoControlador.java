@@ -9,7 +9,6 @@ import Modelo.EquipoDAO;
 import Modelo.Personal;
 import Modelo.PersonalDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -82,28 +81,32 @@ public class DespachoControlador extends HttpServlet {
                 break;
                 
             case "actualizarDespacho":
+                int despacho = Integer.parseInt(request.getParameter("despacho"));
                 int codEquipo = Integer.parseInt(request.getParameter("equipo"));
                 int cantidad = Integer.parseInt(request.getParameter("cantidad"));
                 String fecha = request.getParameter("fecha");
                 
+                d.setIdDespacho(despacho);
                 d.setFechaDespacho(fecha);
                 ddao.editarDespacho(d);
                 
+                de.setIdDespacho(despacho);
                 de.setIdEquipo(codEquipo);
                 de.setCantidad(cantidad);
                 dedao.editarDetalle(de);
                 
-                request.getRequestDispatcher("EquipoControlador?accion=listarDespachos").forward(request, response);
+                request.getRequestDispatcher("DespachoControlador?accion=listarDespachos").forward(request, response);
                 break;
                 
             case "eliminarDespacho":
                 int codDespacho = Integer.parseInt(request.getParameter("idDespacho"));
-                ddao.eliminarDespacho(codDespacho);    
+                ddao.eliminarDespacho(codDespacho);
                 dedao.eliminarDetalle(codDespacho);
                 break;
                 
             default:
                 request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
         }
     }
     

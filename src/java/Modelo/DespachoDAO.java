@@ -87,8 +87,8 @@ public class DespachoDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, d.getIdDespacho());
-            ps.setString(2, d.getFechaDespacho());
+            ps.setString(1, d.getFechaDespacho());
+            ps.setInt(2, d.getIdDespacho());
             ps.executeUpdate();
             
         } catch (SQLException e) {
@@ -98,11 +98,12 @@ public class DespachoDAO {
     }
     
     public void eliminarDespacho(int idDespacho) {
-        String sql = "delete from despacho where idDespacho="+idDespacho;
+        String sql = "delete from despacho where idDespacho=?";
         
         try {
-            con = cn.Conexion();
+             con = cn.Conexion();
             ps = con.prepareStatement(sql);
+            ps.setInt(1, idDespacho);
             ps.executeUpdate();
             
         } catch (SQLException e) {

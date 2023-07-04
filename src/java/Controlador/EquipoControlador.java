@@ -65,6 +65,31 @@ public class EquipoControlador extends HttpServlet {
                 edao.agregarEquipo(eq);
                 break;
                 
+            case "editarEquipo":
+                int codEquipo = Integer.parseInt(request.getParameter("idEquipo"));
+                List listado = edao.filtrarEquipo(codEquipo);
+                
+                request.setAttribute("listado", listado);
+                request.getRequestDispatcher("Editar_Equipos.jsp").forward(request, response);
+                break;
+                
+            case "actualizarEquipo":
+                int equipo = Integer.parseInt(request.getParameter("equipo"));
+                String descripcion = request.getParameter("descripcion");
+                int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+                double precio = Double.parseDouble(request.getParameter("precio"));
+                String fecha = request.getParameter("fecha");
+                
+                eq.setIdEquipo(equipo);
+                eq.setDescripcion(descripcion);
+                eq.setCantidad(cantidad);
+                eq.setPrecio(precio);
+                eq.setFecha(fecha);
+                edao.editarEquipo(eq);
+                
+                request.getRequestDispatcher("EquipoControlador?accion=ListarEquipos").forward(request, response);
+                break;
+                
             case "eliminarEquipo":
                 int idEquipo = Integer.parseInt(request.getParameter("idEquipo"));
                 edao.eliminarEquipo(idEquipo);
@@ -78,6 +103,7 @@ public class EquipoControlador extends HttpServlet {
                 
             default:
                 request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
         }
     }
     

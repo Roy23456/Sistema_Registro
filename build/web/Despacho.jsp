@@ -4,29 +4,18 @@
 <html>
     <jsp:include page="includes/header.jsp"></jsp:include>
     
+    <script language="javascript">
+        function atras(){history.back();}
+    </script>
+    
     <body>
         <jsp:include page="includes/navbar.jsp"></jsp:include>
         
         <h3 class="container mt-3">DESPACHO DE EQUIPOS</h3><hr>
         
-        <div class="container">
-            <div class="card border-primary h-100 py-2">
-                <div class="card-body">
-                    <div class="row">                      
-                        <div class="col" align="right">
-                            <form class="form-inline my-2 my-lg-0">
-                            <a>Buscar: </a>
-                            <input class="form-control-sm" type="search" placeholder="Search" aria-label="Search">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <div class="container py-5">
             <div class="row">
-                <div class="col d-flex">
+                <div class="col">
                     <div class="card border-dark">
                         <div class="card-header text-center">
                             <label class="col col-form-label fw-bold"> REGISTRO DE DESPACHO </label>
@@ -69,7 +58,7 @@
                         
                             <div class="card-footer text-center">
                                 <a id="agregarDespacho" class="btn btn-primary">Agregar</a>
-                                <a id="cancelarDespacho" class="btn btn-danger">Cancelar</a>
+                                <button type="button" onclick="atras()" class="btn btn-danger">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -100,7 +89,7 @@
                                             <td>${dato.getFechaDespacho()}</td>
                                             <td></td>
                                             <td>
-                                                <a href="EquipoControlador?accion=editarDespacho&idDespacho=${dato.getIdDespacho()}" class="btn btn-outline-warning">
+                                                <a href="DespachoControlador?accion=editarDespacho&idDespacho=${dato.getIdDespacho()}" class="btn btn-outline-warning">
                                                     <span class="bi bi-pencil-square">Editar</span>
                                                 </a>
                                                     

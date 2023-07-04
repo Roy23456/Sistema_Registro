@@ -29,8 +29,9 @@
                 <br/>
                
                 <input type="hidden" name="fecha" id="fecha" value="">
+                <input type="hidden" name="equipo" id="equipo" value="${listado[0].getIdEquipo()}">
                 
-                <input type="button" id="editarDespacho" value="Actualizar" class="btn btn-primary btn-lg"/>
+                <input type="button" id="editarEquipo" value="Actualizar" class="btn btn-primary btn-lg"/>
                 <button type="button" onclick="atras()" class="btn btn-warning btn-lg">Regresar</button>
             </form>
         </div>
