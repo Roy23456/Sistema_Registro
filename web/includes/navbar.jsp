@@ -10,19 +10,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="Principal.jsp">Inicio</a>  
+                    <a class="nav-link" href="Controlador?accion=Principal">Inicio</a>  
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="EquipoControlador?accion=ListarEquipos">Registro</a>
+                    <a class="nav-link" href="EquipoControlador?accion=ListarEquipos">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="EquipoControlador?accion=listarDespachos">Despacho</a>
+                    <a class="nav-link" href="DespachoControlador?accion=listarDespachos">Despacho</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="EquipoControlador?accion=listarPersonal">Personal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Salir
+                    <a class="nav-link" href="Controlador?accion=logout">Salir
                         <i class="bi bi-box-arrow-left"></i>
                     </a>
                 </li>

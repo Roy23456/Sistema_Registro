@@ -22,19 +22,6 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-    }
-        
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-        
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-
         HttpSession session;
         String accion = request.getParameter("accion");
 
@@ -85,11 +72,27 @@ public class Controlador extends HttpServlet {
                 udao.agregarUsuario(us);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 
+            case "Principal":
+                request.getRequestDispatcher("Principal.jsp").forward(request, response);;
+                break;
+                
             default:
                 session = request.getSession();
                 session.invalidate();
                 request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+    }
+        
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+        
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
         
     @Override

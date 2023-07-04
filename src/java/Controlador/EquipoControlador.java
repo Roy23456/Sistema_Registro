@@ -70,74 +70,10 @@ public class EquipoControlador extends HttpServlet {
                 edao.eliminarEquipo(idEquipo);
                 break;
                 
-            case "listarDespachos":
-                List listar = dedao.listarDetalle();
-                List equipo = edao.listarEquipos();
-                List personal = pdao.listarPersonal();
-                
-                
-                request.setAttribute("listar", listar);
-                request.setAttribute("equipo", equipo);
-                request.setAttribute("personal", personal);
-                request.getRequestDispatcher("Despacho.jsp").forward(request, response);
-                break;
-            
-            case "agregarDespacho":
-                int Equipo = Integer.parseInt(request.getParameter("idEquipo"));
-                int Personal = Integer.parseInt(request.getParameter("idPersonal"));
-                int Usuario = Integer.parseInt(request.getParameter("idUsuario"));
-                int cantidadDespacho = Integer.parseInt(request.getParameter("Cantidad"));
-                String fechaDespacho = request.getParameter("fecha");
-                
-                d.setIdPersonal(Personal);
-                d.setIdUsuario(Usuario);
-                d.setFechaDespacho(fechaDespacho);
-                ddao.agregarDespacho(d);
-                
-                int idDesp = Integer.parseInt(ddao.idDespacho());
-                
-                de.setIdDespacho(idDesp);
-                de.setIdEquipo(Equipo);
-                de.setCantidad(cantidadDespacho);
-                dedao.agregarDetalle(de);
-                
-                break;
-                
-            case "editarDespacho":
-                int idDespacho = Integer.parseInt(request.getParameter("idDespacho"));
-                List listado = dedao.filtrarDetalle(idDespacho);
-                List equipo1 = edao.listarEquipos();
-                
-                request.setAttribute("equipo", equipo1);
-                request.setAttribute("listado", listado);
-                request.getRequestDispatcher("Editar.jsp").forward(request, response);
-                break;
-                
-            case "actualizarDespacho":
-                int codEquipo = Integer.parseInt(request.getParameter("equipo"));
-                int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-                String fecha = request.getParameter("fecha");
-                
-                d.setFechaDespacho(fecha);
-                ddao.editarDespacho(d);
-                
-                de.setIdEquipo(codEquipo);
-                de.setCantidad(cantidad);
-                dedao.editarDetalle(de);
-                
-                request.getRequestDispatcher("EquipoControlador?accion=listarDespachos").forward(request, response);
-                break;
-                
             case "listarPersonal":
                 List listap = pdao.listarPersonal();
                 request.setAttribute("lista", listap);
                 request.getRequestDispatcher("Personal.jsp").forward(request, response);
-                break;
-                
-            case "eliminarDespacho":
-                int codDespacho = Integer.parseInt(request.getParameter("idDespacho"));
-                ddao.eliminarDespacho(codDespacho);    
-                dedao.eliminarDetalle(codDespacho);
                 break;
                 
             default:
