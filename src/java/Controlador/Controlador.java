@@ -1,8 +1,11 @@
 package Controlador;
 
+import Modelo.Indicador;
+import Modelo.IndicadorDAO;
 import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +18,10 @@ public class Controlador extends HttpServlet {
     
     UsuarioDAO udao = new UsuarioDAO();
     Usuario us = new Usuario();
+    
+    Indicador in = new Indicador();
+    IndicadorDAO idao = new IndicadorDAO();
+    
     String Nombre, Apellido, Correo, Usuario, Password;
     int idUsuario, idRol, DNI;
     
@@ -77,6 +84,11 @@ public class Controlador extends HttpServlet {
                 break;
                 
             case "Dashboard":
+                List lista1 = idao.totalDespacho();
+                List lista2 = idao.totalRegistros();
+                
+                request.setAttribute("lista1", lista1);
+                request.setAttribute("lista2", lista2);
                 request.getRequestDispatcher("Dashboard.jsp").forward(request, response);;
                 break;
                 
