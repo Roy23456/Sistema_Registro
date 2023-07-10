@@ -85,7 +85,7 @@ public class Controlador extends HttpServlet {
                 
             case "Dashboard":
                 List lista1 = idao.totalDespacho();
-                List lista2 = idao.totalRegistros();
+                List lista2 = idao.indiceRotacion();
                 
                 request.setAttribute("lista1", lista1);
                 request.setAttribute("lista2", lista2);

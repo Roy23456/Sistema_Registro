@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Controlador/Controlador.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Controlador/EquipoControlador.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Modelo/Despacho.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/web/Editar.jsp</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/web/js/Equipos.js</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Modelo/DetalleDespachoDAO.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/web/Despacho.jsp</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Modelo/DespachoDAO.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/src/java/Modelo/Equipo.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/Sistema_Registro/web/Registro_Equipos.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/src/java/Modelo/DespachoDAO.java</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/js/Equipos.js</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/Registro_Equipos.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/index.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/Despacho.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/src/java/Controlador/DespachoControlador.java</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/src/java/Modelo/DetalleDespachoDAO.java</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/Editar.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/web/Editar_Equipos.jsp</file>
+            <file>file:/D:/Documentos/GitHub/Sistema_Registro/src/java/Config/Conexion.java</file>
         </group>
     </open-files>
 </project-private>

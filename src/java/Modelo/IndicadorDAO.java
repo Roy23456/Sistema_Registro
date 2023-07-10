@@ -16,12 +16,12 @@ public class IndicadorDAO {
     int r;
     
     public List totalDespacho() {
-        String sql = "SELECT e.Descripcion, MONTH(d.fechaDespacho) AS mes, SUM(dd.Cantidad) AS cantidadDespachos"
+        String sql = "SELECT e.Descripcion, DATE_FORMAT(d.fechaDespacho, '%Y-%m') AS Mes, SUM(dd.Cantidad) AS cantidadDespachos"
                 + " FROM detalle_despacho dd"
                 + " JOIN despacho d ON dd.idDespacho = d.idDespacho"
                 + " JOIN equipos e ON dd.idEquipo = e.idEquipo"
-                + " GROUP BY MONTH(d.fechaDespacho), e.Descripcion"
-                + " ORDER BY MONTH(d.fechaDespacho), e.Descripcion";
+                + " GROUP BY DATE_FORMAT(d.fechaDespacho, '%Y-%m'), e.Descripcion"
+                + " ORDER BY DATE_FORMAT(d.fechaDespacho, '%Y-%m'), e.Descripcion";
         
         List<Indicador> lista = new ArrayList<>();
         
@@ -34,7 +34,7 @@ public class IndicadorDAO {
                 Indicador i = new Indicador();
                 i.setDescripcion(rs.getString("Descripcion"));
                 i.setCantidadTotal(rs.getInt("cantidadDespachos"));
-                i.setMes(rs.getInt("mes"));
+                i.setMes(rs.getString("Mes"));
                 lista.add(i);
             }
             
@@ -44,30 +44,35 @@ public class IndicadorDAO {
         return lista;
     }
     
-    public List totalRegistros() {
-        String sql = "SELECT Descripcion, MONTH(Fecha) AS mes, SUM(Cantidad) AS cantidadEquipos"
-                + " FROM equipos"
-                + " GROUP BY MONTH(Fecha), Descripcion"
-                + " ORDER BY MONTH(Fecha), Descripcion";
+    public List indiceRotacion() {
         
-        List<Indicador> lista = new ArrayList<>();
+        String sql = "SELECT DATE_FORMAT(d.fechaDespacho, '%Y-%m') AS Mes, e.Descripcion,"
+                + " (SUM(dd.Cantidad) / ((e.Cantidad + SUM(dd.Cantidad))/2)) * 100 AS indiceRotacion"
+                + " FROM equipos e"
+                + " LEFT JOIN detalle_despacho dd ON e.idEquipo = dd.idEquipo"
+                + " LEFT JOIN despacho d ON dd.idDespacho = d.idDespacho"
+                + " WHERE YEAR(d.fechaDespacho) = YEAR(e.Fecha)"
+                + " GROUP BY DATE_FORMAT(d.fechaDespacho, '%Y-%m'), e.Descripcion";
+        
+        List<Indicador> indice = new ArrayList<>();
         
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             
-            while (rs.next()) {
+            while (rs.next()) {                
                 Indicador i = new Indicador();
                 i.setDescripcion(rs.getString("Descripcion"));
-                i.setCantidadTotal(rs.getInt("cantidadEquipos"));
-                i.setMes(rs.getInt("mes"));
-                lista.add(i);
+                i.setIndiceRotacion(rs.getDouble("indiceRotacion"));
+                i.setMes(rs.getString("Mes"));
+                indice.add(i);
             }
             
         } catch (SQLException e) {
-            
         }
-        return lista;
+        
+        return indice;
     }
+    
 }

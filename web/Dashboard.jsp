@@ -49,7 +49,7 @@
                 <div class="col-xl-5 col-lg-5">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 text-center">
-                            <h6 class="m-0 font-weight-bold text-primary">TOTAL DE REGISTROS</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">ÍNDICE DE ROTACIÓN</h6>
                         </div>
                         
                         <div class="card-body">
@@ -60,7 +60,7 @@
                                             <tr>
                                                 <th>EQUIPO</th>
                                                 <th>MES</th>
-                                                <th>TOTAL</th>
+                                                <th>PORCENTAJE</th>
                                             </tr>
                                         </thead>
 
@@ -69,7 +69,7 @@
                                                 <tr>
                                                     <td>${datos.getDescripcion()}</td>
                                                     <td>${datos.getMes()}</td>
-                                                    <td>${datos.getCantidadTotal()}</td>
+                                                    <td>${datos.getIndiceRotacion()} %</td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
