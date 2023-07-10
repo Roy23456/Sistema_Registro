@@ -11,7 +11,7 @@ public class Conexion {
     public Connection Conexion(){      
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_redycom", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://byizrxottl1kxyjagehx-mysql.services.clever-cloud.com:3306/byizrxottl1kxyjagehx?useSSL=false&serverTimezone=America/Lima", "ufmuqw1jsqj0gknk", "1IuAKJeDLMyUnEUsc585");
             System.out.println("Conexion exitosa");
             
         } catch (ClassNotFoundException | SQLException e) {
