@@ -65,6 +65,11 @@ $(document).ready(function () {
                         monto.value = `${total.toFixed(2)}`;
                     }
                 };
+                
+                cantidad.addEventListener('input', (e) => {
+                    const input = e.target;
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                });
             },
             showCancelButton: true,
             confirmButtonText: "Agregar",
@@ -138,7 +143,7 @@ $(document).ready(function () {
     
     //Eliminar Equipo
     $("tr #eliminarEquipo").click(function () {
-        var idEquipo = document.getElementById('equipo').value;
+        var idEquipo = $(this).parent().find("#equipo").val();
 
         Swal.fire({
             title: "¿Está Seguro de Eliminar?",
@@ -244,7 +249,7 @@ $(document).ready(function () {
     
     //Eliminar Despacho
     $("tr #eliminarDespacho").click(function () {
-        var idDespacho = document.getElementById('idDespacho').value;
+        var idDespacho = $(this).parent().find("#idDespacho").val();
         
         Swal.fire({
             title: "¿Está Seguro de Eliminar?",

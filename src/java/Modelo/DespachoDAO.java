@@ -101,7 +101,7 @@ public class DespachoDAO {
         String sql = "delete from despacho where idDespacho=?";
         
         try {
-             con = cn.Conexion();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, idDespacho);
             ps.executeUpdate();

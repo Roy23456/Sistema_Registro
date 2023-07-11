@@ -100,8 +100,8 @@ public class DespachoControlador extends HttpServlet {
                 
             case "eliminarDespacho":
                 int codDespacho = Integer.parseInt(request.getParameter("idDespacho"));
-                ddao.eliminarDespacho(codDespacho);
                 dedao.eliminarDetalle(codDespacho);
+                ddao.eliminarDespacho(codDespacho);
                 break;
                 
             default:
